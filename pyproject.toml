@@ -6,5 +6,8 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "fastexcel>=0.14.0",
+    "networkx>=3.5",
     "polars>=1.30.0",
+    "thefuzz>=0.22.1",
+    "typing>=3.10.0.0",
 ]
