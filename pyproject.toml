@@ -9,5 +9,7 @@ dependencies = [
     "networkx>=3.5",
     "polars>=1.30.0",
     "thefuzz>=0.22.1",
+    "tqdm>=4.67.1",
     "typing>=3.10.0.0",
+    "xlsxwriter>=3.2.3",
 ]
