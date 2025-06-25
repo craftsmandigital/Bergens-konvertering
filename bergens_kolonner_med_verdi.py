@@ -25,7 +25,7 @@ def bergens_kolonner_med_verdi(df: pl.DataFrame, column_name: str) -> pl.DataFra
     ]
 
     # 2. Define the static header text
-    HEADER_TEXT = "\nFelter i fra det gammle Bergens registeret:\n---\n"
+    HEADER_TEXT = "\r\n--- Felter i fra det gammle Bergens registeret:\r\n---\r\n"
 
     # 3. Build the list of expressions for each part of the description
     formatted_parts = [
@@ -39,7 +39,7 @@ def bergens_kolonner_med_verdi(df: pl.DataFrame, column_name: str) -> pl.DataFra
             pl.concat_str([
                 pl.lit(f"==> {c}: "),
                 pl.col(c).cast(pl.String),
-                pl.lit("\n")
+                pl.lit("\r\n")
             ])
         )
         .otherwise(None)
