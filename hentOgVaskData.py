@@ -27,7 +27,11 @@ def hent_og_vask_data() -> pl.DataFrame:
           # # uten filter finnes 333 medlemmer, mens med filter finnes 284 medlemmer.
           # # det er disse som har vært utgangspunkt for medlems opptellig
           .filter(
-            pl.col("POSTNR").is_between(pl.lit("100"), pl.lit("9000"), closed="both") &
+            # pl.col("POSTNR").is_between(pl.lit("0100"), pl.lit("9999"), closed="both") &
+            pl.col("POSTNR").is_not_null() &
+            (pl.col("POSTNR") != "") &
+            # Det er en god del med disse verdiene. dette er utdaterte greier
+            ~pl.col("POSTNR").is_in(["UL-100", "U-100"]) &
             # Organisasjoner skal ikke bli konvertert. Disse blir konvertert manuelt.
             ~(pl.col("Kategori") == "O")
           )
